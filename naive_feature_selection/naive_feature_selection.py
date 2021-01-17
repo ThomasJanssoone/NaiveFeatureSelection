@@ -291,10 +291,12 @@ class NaiveFeatureSelection(BaseEstimator, SelectorMixin):
             res_nfs = self._binary_naive_feature_selection(X, y, self.k)
             mask = np.zeros(X.shape[1], dtype=bool)
             mask[res_nfs["idx"]] = 1
+            self.res_nfs = res_nfs
         else:
             res_nfs = self._naive_feature_selection(X, y, self.k)
             mask = np.zeros(X.shape[1], dtype=bool)
             mask[res_nfs["idx"]] = 1
+            self.res_nfs = res_nfs
 
         self.mask_ = mask
         return self
